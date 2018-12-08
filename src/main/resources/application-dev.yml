@@ -1,0 +1,39 @@
+logging:
+    level:
+        ROOT: DEBUG
+        mx.com.dxesoft.lunchtime: DEBUG
+
+spring:
+    data:
+        mongodb:
+            uri: mongodb://lunch:!qazse4@localhost:27017/lunch_time
+    jackson:
+            serialization.indent_output: true
+
+server:
+    port: 8085
+
+#spring:
+#    profiles:
+#        active: dev
+#        #include: swagger
+##    devtools:
+##            restart:
+##                enabled: true
+##            livereload:
+##                enabled: false
+#    jackson:
+#            serialization.indent_output: true
+#    data:
+#        mongodb:
+#          uri: mongodb://lunch:!qazse4@localhost:27017/lunch_time
+##                database: lunch_time
+##                host: localhost
+##                port: 37618
+##                username: ernestos
+##                password: admin
+##spring.data.mongodb.uri: mongodb://<user>:<passwd>@<url>:<port>/<dbname>
+##spring.data.mongodb.uri: mongodb://ernesto:admin@localhost:32771/admin
+#
+##server:
+##    port: 8085
