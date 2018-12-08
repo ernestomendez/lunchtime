@@ -1,0 +1,17 @@
+spring:
+    application:
+        name: lunchtime
+    profiles:
+        active: dev
+    data:
+        mongodb:
+            uri: mongodb://root:admin@localhost:37017/admin
+
+server:
+    port: 8084
+
+
+##############################################################
+#   to execute the app in dev mode use this command:
+#   mvn spring-boot:run -Dspring-boot.run.profiles=dev
+##############################################################
