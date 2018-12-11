@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/")
-@Api(value = "HorarioDeComidaResource", description = "Horarios de comida API")
+@Api(value = "HorariosResource", description = "Horarios de comida API")
 public class HorarioDeComidaResource {
 
     private final Logger log = LoggerFactory.getLogger(HorarioDeComidaResource.class);
@@ -34,12 +34,12 @@ public class HorarioDeComidaResource {
                 @AuthorizationScope(scope = "write:horariosdecomida", description = "modify the horarios de comida"),
                 @AuthorizationScope(scope = "read:horariosdecomida", description = "read the horarios de comida")
         })
-    }, tags = {"Horarios"})
+    }, tags = {"horario-de-comida-resource"})
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "successful operation", response = HorarioDeComida.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Invalid status value")
     })
-    @GetMapping(path = "/horarios",
+    @GetMapping(path = "/horariodecomida",
         produces = { "application/json" })
     public ResponseEntity<List<HorarioDeComida>> findAll() {
         log.debug("REST request to get all the Horarios de comida");
@@ -54,12 +54,12 @@ public class HorarioDeComidaResource {
                     @AuthorizationScope(scope = "write:horariosdecomida", description = "modify the horarios de comida"),
                     @AuthorizationScope(scope = "read:horariosdecomida", description = "read the horarios de comida")
             })
-    }, tags = {"Horarios"})
+    }, tags = {"horario-de-comida-resource"})
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Instance created", response = HorarioDeComida.class),
             @ApiResponse(code = 405, message = "Invalid input")
     })
-    @PostMapping(path = "/horarios",
+    @PostMapping(path = "/horariodecomida",
         produces = { "application/json" })
     public ResponseEntity<HorarioDeComida> addHorario(@ApiParam(value = "Horario de comida to be saved", required = true)
                                                           @Valid @RequestBody HorarioDeComida horarioDeComida) throws URISyntaxException {
@@ -76,12 +76,12 @@ public class HorarioDeComidaResource {
                     @AuthorizationScope(scope = "write:horariosdecomida", description = "modify the horarios de comida"),
                     @AuthorizationScope(scope = "read:horariosdecomida", description = "read the horarios de comida")
             })
-    }, tags = {"Horarios"})
+    }, tags = {"horario-de-comida-resource"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "successful operation", response = HorarioDeComida.class),
             @ApiResponse(code = 405, message = "Invalid input")
     })
-    @PutMapping(path = "/horarios",
+    @PutMapping(path = "/horariodecomida",
             produces = { "application/json" })
     public ResponseEntity<HorarioDeComida> updateHorario(@ApiParam(value = "Horario de comida to be updated", required = true)
                                                              @Valid @RequestBody HorarioDeComida horarioDeComida) {
@@ -101,12 +101,12 @@ public class HorarioDeComidaResource {
                     @AuthorizationScope(scope = "write:horariosdecomida", description = "modify the horarios de comida"),
                     @AuthorizationScope(scope = "read:horariosdecomida", description = "read the horarios de comida")
             })
-    }, tags = {"Horarios"})
+    }, tags = {"horario-de-comida-resource"})
     @ApiResponses(value = {
             @ApiResponse(code = 400, message = "Invalid ID supplied"),
             @ApiResponse(code = 404, message = "Horario not found")
     })
-    @DeleteMapping("/horarios/{id}")
+    @DeleteMapping("/horariodecomida/{id}")
     ResponseEntity<Void> deleteHorario(@ApiParam(value = "Horario de comida Id to be deleted", required = true) @PathVariable String id) {
         log.debug("REST Request to delete an 'Horario de comida'");
 
@@ -121,10 +121,10 @@ public class HorarioDeComidaResource {
 //                    @AuthorizationScope(scope = "write:horariosdecomida", description = "modify the horarios de comida"),
 //                    @AuthorizationScope(scope = "read:horariosdecomida", description = "read the horarios de comida")
 //            })
-//    }, tags = {"Horarios"})
+//    }, tags = {"horario-de-comida-resource"})
 //    @ApiResponses(value = {
 //            @ApiResponse(code = 200, message = "successful operation", response = HorarioDeComida.class, responseContainer = "List"),
 //            @ApiResponse(code = 400, message = "Invalid status value")
 //    })
-//    @GetMapping("/horarios")
+//    @GetMapping("/horariodecomida")
 }
