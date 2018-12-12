@@ -8,10 +8,10 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class LunchtimeApplication {
 
 	public static void main(String[] args) {
-		//SpringApplication.run(LunchtimeApplication.class, args);
-        new SpringApplicationBuilder()
-                .sources(LunchtimeApplication.class)
-                .profiles("dev")
-                .run(args);
+		SpringApplication.run(LunchtimeApplication.class, args);
+//        new SpringApplicationBuilder()
+//                .sources(LunchtimeApplication.class)
+//                .profiles("dev")
+//                .run(args);
 	}
 }
