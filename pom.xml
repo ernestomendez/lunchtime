@@ -111,13 +111,9 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<!-- this configuration is for spring boot profiles -->
 					<profiles>
-						<profile>dev
-							<!--<id>dev</id>-->
-							<!--<activation>-->
-								<!--<activeByDefault>true</activeByDefault>-->
-							<!--</activation>-->
-						</profile>
+						<profile>dev</profile>
 						<profile>prod</profile>
                         <!--<profile>swagger</profile>-->
 					</profiles>

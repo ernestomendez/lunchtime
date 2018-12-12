@@ -1,8 +1,7 @@
 spring:
     application:
         name: lunchtime
-    profiles:
-        active: dev
+
     data:
         mongodb:
             uri: mongodb://root:admin@localhost:37017/admin
