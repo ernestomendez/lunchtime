@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/")
 @Api(value = "HorariosResource", description = "Horarios de comida API")
+@CrossOrigin
 public class HorarioDeComidaResource {
 
     private final Logger log = LoggerFactory.getLogger(HorarioDeComidaResource.class);
