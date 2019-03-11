@@ -14,6 +14,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/")
@@ -30,14 +31,15 @@ public class HorarioDeComidaResource {
         this.horarioDeComidaService = horarioDeComidaService;
     }
 
-    @ApiOperation(value = "Gets all the Horarios de comida", nickname = "findAll", notes = "Examples: Breakfast, Lunch, Dinner, Snacks", response = HorarioDeComida.class, responseContainer = "List", authorizations = {
+    @ApiOperation(value = "Gets all the Horarios de comida", nickname = "findAll", notes = "Examples: Breakfast, Lunch, Dinner, Snacks",
+            response = HorarioDeComida.class, responseContainer = "List", authorizations = {
         @Authorization(value = "lunch_auth", scopes = {
                 @AuthorizationScope(scope = "write:horariosdecomida", description = "modify the horarios de comida"),
                 @AuthorizationScope(scope = "read:horariosdecomida", description = "read the horarios de comida")
         })
     }, tags = {"horario-de-comida-resource"})
     @ApiResponses(value = {
-        @ApiResponse(code = 200, message = "successful operation", response = HorarioDeComida.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "Successful operation", response = HorarioDeComida.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Invalid status value")
     })
     @GetMapping(path = "/horariodecomida",
@@ -48,6 +50,27 @@ public class HorarioDeComidaResource {
         List<HorarioDeComida> horarioDeComidas = horarioDeComidaService.findAll();
 
         return new ResponseEntity<List<HorarioDeComida>>(horarioDeComidas, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Gets an 'Horario de Comida' given it's Id", nickname = "getHorario", response = HorarioDeComida.class, authorizations = {
+        @Authorization(value = "lunch_auth", scopes = {
+                @AuthorizationScope(scope = "write:horariosdecomida", description = "modify the horarios de comida"),
+                @AuthorizationScope(scope = "read:horariosdecomida", description = "read the horarios de comida")
+        })
+    }, tags = {"horario-de-comida-resource"})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successful operation", response = HorarioDeComida.class),
+            @ApiResponse(code = 400, message = "Invalid status value")
+    })
+    @GetMapping(path = "/horariodecomida/{id}",
+        produces = { "application/json" })
+    public ResponseEntity<HorarioDeComida> findHorario(@ApiParam(value = "'Horario de comida' Id to be found", required = true) @PathVariable String id) {
+        log.debug("REST request to find an 'Horario de comida' given it's Id");
+
+        Optional<HorarioDeComida> horarioDeComida = horarioDeComidaService.findById(id);
+
+        return horarioDeComida.map(response -> ResponseEntity.ok().body(response))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @ApiOperation(value = "Save horarios de comida", nickname = "Save", response = HorarioDeComida.class, authorizations = {

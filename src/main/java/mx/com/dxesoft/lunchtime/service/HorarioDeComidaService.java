@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HorarioDeComidaService {
@@ -70,5 +71,9 @@ public class HorarioDeComidaService {
         Preconditions.checkArgument(StringUtils.isEmpty(id), "Id can not be null or empty");
 
         this.horarioDeComidaRepository.deleteById(id);
+    }
+
+    public Optional<HorarioDeComida> findById(String id) {
+        return this.horarioDeComidaRepository.findById(id);
     }
 }
