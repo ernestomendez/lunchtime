@@ -35,10 +35,23 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!--<dependency>
+
+		<!-- SECURITY -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.keycloak</groupId>
 			<artifactId>keycloak-spring-boot-starter</artifactId>
-		</dependency>-->
+		</dependency>
+		<dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-spring-security-adapter</artifactId>
+			<version>6.0.0</version>
+		</dependency>
+
+		<!-- SECURITY -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -93,17 +106,17 @@
 		</dependency>
 	</dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<!--<dependency>
-				<groupId>org.keycloak.bom</groupId>
-				<artifactId>keycloak-adapter-bom</artifactId>
-				<version>${keycloak.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>-->
-		</dependencies>
-	</dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.keycloak.bom</groupId>
+                <artifactId>keycloak-adapter-bom</artifactId>
+                <version>6.0.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 	<build>
 		<plugins>

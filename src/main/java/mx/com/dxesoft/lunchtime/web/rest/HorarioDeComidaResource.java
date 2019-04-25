@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.annotation.Secured;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -44,6 +45,7 @@ public class HorarioDeComidaResource {
     })
     @GetMapping(path = "/horariodecomida",
         produces = { "application/json" })
+    @Secured("ROLE_USER")
     public ResponseEntity<List<HorarioDeComida>> findAll() {
         log.debug("REST request to get all the Horarios de comida");
 
@@ -64,6 +66,7 @@ public class HorarioDeComidaResource {
     })
     @GetMapping(path = "/horariodecomida/{id}",
         produces = { "application/json" })
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<HorarioDeComida> findHorario(@ApiParam(value = "'Horario de comida' Id to be found", required = true) @PathVariable String id) {
         log.debug("REST request to find an 'Horario de comida' given it's Id");
 
@@ -85,6 +88,7 @@ public class HorarioDeComidaResource {
     })
     @PostMapping(path = "/horariodecomida",
         produces = { "application/json" })
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<HorarioDeComida> addHorario(@ApiParam(value = "Horario de comida to be saved", required = true)
                                                           @Valid @RequestBody HorarioDeComida horarioDeComida) throws URISyntaxException {
         log.debug("REST request to create a new 'Horario de comida'");
@@ -107,6 +111,7 @@ public class HorarioDeComidaResource {
     })
     @PutMapping(path = "/horariodecomida",
             produces = { "application/json" })
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<HorarioDeComida> updateHorario(@ApiParam(value = "Horario de comida to be updated", required = true)
                                                              @Valid @RequestBody HorarioDeComida horarioDeComida) {
         log.debug("REST request to update a new 'Horario de comida'");
@@ -131,6 +136,7 @@ public class HorarioDeComidaResource {
             @ApiResponse(code = 404, message = "Horario not found")
     })
     @DeleteMapping("/horariodecomida/{id}")
+    @Secured("ROLE_ADMIN")
     ResponseEntity<Void> deleteHorario(@ApiParam(value = "Horario de comida Id to be deleted", required = true) @PathVariable String id) {
         log.debug("REST Request to delete an 'Horario de comida'");
 
