@@ -43,7 +43,7 @@ public class HorarioDeComidaResource {
         @ApiResponse(code = 200, message = "Successful operation", response = HorarioDeComida.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Invalid status value")
     })
-    @GetMapping(path = "/horariodecomida",
+    @GetMapping(path = "/user/horariodecomida",
         produces = { "application/json" })
     @Secured("ROLE_USER")
     public ResponseEntity<List<HorarioDeComida>> findAll() {
@@ -64,7 +64,7 @@ public class HorarioDeComidaResource {
             @ApiResponse(code = 200, message = "Successful operation", response = HorarioDeComida.class),
             @ApiResponse(code = 400, message = "Invalid status value")
     })
-    @GetMapping(path = "/horariodecomida/{id}",
+    @GetMapping(path = "/admin/horariodecomida/{id}",
         produces = { "application/json" })
     @Secured("ROLE_ADMIN")
     public ResponseEntity<HorarioDeComida> findHorario(@ApiParam(value = "'Horario de comida' Id to be found", required = true) @PathVariable String id) {
@@ -86,7 +86,7 @@ public class HorarioDeComidaResource {
             @ApiResponse(code = 201, message = "Instance created", response = HorarioDeComida.class),
             @ApiResponse(code = 405, message = "Invalid input")
     })
-    @PostMapping(path = "/horariodecomida",
+    @PostMapping(path = "/admin/horariodecomida",
         produces = { "application/json" })
     @Secured("ROLE_ADMIN")
     public ResponseEntity<HorarioDeComida> addHorario(@ApiParam(value = "Horario de comida to be saved", required = true)
@@ -109,7 +109,7 @@ public class HorarioDeComidaResource {
             @ApiResponse(code = 200, message = "successful operation", response = HorarioDeComida.class),
             @ApiResponse(code = 405, message = "Invalid input")
     })
-    @PutMapping(path = "/horariodecomida",
+    @PutMapping(path = "/admin/horariodecomida",
             produces = { "application/json" })
     @Secured("ROLE_ADMIN")
     public ResponseEntity<HorarioDeComida> updateHorario(@ApiParam(value = "Horario de comida to be updated", required = true)
@@ -135,7 +135,7 @@ public class HorarioDeComidaResource {
             @ApiResponse(code = 400, message = "Invalid ID supplied"),
             @ApiResponse(code = 404, message = "Horario not found")
     })
-    @DeleteMapping("/horariodecomida/{id}")
+    @DeleteMapping("/admin/horariodecomida/{id}")
     @Secured("ROLE_ADMIN")
     ResponseEntity<Void> deleteHorario(@ApiParam(value = "Horario de comida Id to be deleted", required = true) @PathVariable String id) {
         log.debug("REST Request to delete an 'Horario de comida'");

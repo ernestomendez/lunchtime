@@ -13,6 +13,19 @@ spring:
 server:
     port: 8085
 
+
+
+keycloak:
+    realm: lunchtime-dxesoft
+    bearer-only: true
+    auth-server-url: http://localhost:8080/auth
+    ssl-required: external
+    resource: comidas-backend
+    verify-token-audience: true
+    use-resource-role-mappings: true
+    principal-attribute: preferred_username
+
+
 #spring:
 #    profiles:
 #        active: dev
